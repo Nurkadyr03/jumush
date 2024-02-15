@@ -1,61 +1,81 @@
+import 'package:jumush/screens/bottom_navigation_pages/channels/create/create_page.dart';
 import 'package:jumush/screens/bottom_navigation_pages/channels/drawer_page.dart';
+
 import 'package:jumush/tools/file_imports.dart';
 
-class ChannelsPage extends StatefulWidget {
-  const ChannelsPage({super.key});
+const List nameChanels = <String>[
+  "электрика",
+  "сантехника",
+  "клининг",
+  "маркетинг",
+  "строителство",
+  "разнорабочий",
+  "другие работы",
+];
 
+class ChannelsPage extends StatefulWidget {
+ ChannelsPage({Key?key,required this.appBarName}):super(key: key);
+ final String appBarName;
   @override
   State<ChannelsPage> createState() => _ChannelsPageState();
 }
-
+ 
 class _ChannelsPageState extends State<ChannelsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      drawer:   DrawerPage(),
-      body: Padding(
-        padding: const EdgeInsets.all(14.0),
-        child: Stack(
-          children: [
-            Positioned(
-              right: 0,
-              left: 0,
-              bottom: 10,
-              top: 580,
-              child: Stack(
-                children: [
-                  const SizedBox(
-                    height: 202,
-                    width: double.infinity,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(color: Colors.white70),
-                    ),
-                  ),
-                  Positioned(
-                    child: Form(
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          suffixIconColor: Colors.blue,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          hintText: "написать",
-                          hintStyle: TextStyle(color: Colors.blue[300]),
-                          suffixIcon: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.keyboard_arrow_right,
-                            ),
-                            iconSize: 36,
+      appBar: AppBar(
+        title: Text(widget.appBarName),
+        leading: IconButton(
+            onPressed: () {
+              showModalBottomSheet(
+               // backgroundColor: Colors.black12,
+                context: context,
+                builder: (BuildContext context) {
+                  return ColoredBox(
+                    color:const Color.fromARGB(255, 169, 200, 225),
+                    // height: 300,
+                    // width: double.infinity,
+                    child: ListView.builder(
+                      itemCount: nameChanels.length,
+                      itemBuilder: (BuildContext context, int  index) {
+                        final chanel = nameChanels[index];
+                        return Card(
+                          child: TextButton(
+                            
+                            child: Text(chanel),
+                            onPressed: () {
+                              Navigator.push(context, MaterialPageRoute(builder: (context) =>  ChannelsPage(appBarName: chanel,),));
+                            },
                           ),
-                        ),
-                      ),
+                        );
+                      },
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+                  );
+                },
+              );
+            },
+            icon: const Icon(
+              Icons.menu,
+            )),
+        actions: [
+          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const CreatePage()));
+        },
+        child: const Icon(
+          Icons.add,
+          size: 28,
         ),
       ),
     );

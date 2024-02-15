@@ -1,3 +1,4 @@
+import 'package:jumush/screens/bottom_navigation_pages/chats/chat_page.dart';
 import 'package:jumush/tools/file_imports.dart';
 
 class ChatsPage extends StatefulWidget {
@@ -12,68 +13,44 @@ class _ChatsPageState extends State<ChatsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Stack(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: Column(
           children: [
-            ListView.builder(
-              scrollDirection: Axis.vertical,
-              itemCount: 33,
-              itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.only(right: 3, left: 3),
-                  child: ListTile(
-                    title: Text("chats"),
-                    leading: Icon(Icons.person),
-                    trailing: Column(
-                      children: [
-                        Text("12:45"),
-                        Text("2", style: TextStyle(color: Colors.green))
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
-            Positioned(
-              right: 0,
-              left: 0,
-              bottom: 10,
-              top: 640,
-              child: Stack(
-                children: [
-                  const SizedBox(
-                    height: 202,
-                    width: double.infinity,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(color: Colors.white70),
-                    ),
-                  ),
-                  Positioned(
-                    child: Form(
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                          suffixIconColor: Colors.blue,
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          hintText: "написать",
-                          hintStyle: TextStyle(color: Colors.blue[300]),
-                          suffixIcon: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              Icons.keyboard_arrow_right,
-                            ),
-                            iconSize: 36,
+            const SizedBox(height: 4),
+            Expanded(
+              
+              child: ListView.builder(
+                scrollDirection: Axis.vertical,
+                itemCount: 33,
+                itemBuilder: (context, index) {
+                  return  Padding(
+                    padding: const EdgeInsets.only(right: 3, left: 3),
+                    child: GestureDetector(
+                      onTap:() {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>const ChatPage() ,),);
+                      },
+                      child: const Card(
+                        child: ListTile(
+                          title: Text("chats"),
+                          leading: Icon(Icons.person),
+                          trailing: Column(
+                            children: [
+                              Text("12:45"),
+                              Text("2", style: TextStyle(color: Colors.green))
+                            ],
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  );
+                },
               ),
             ),
+           
           ],
         ),
       ),
+      
     );
   }
 }

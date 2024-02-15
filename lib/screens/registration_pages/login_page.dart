@@ -1,5 +1,7 @@
 
 
+import 'package:jumush/screens/main_screen.dart';
+
 import '../../tools/file_imports.dart';
 
 class LoginPage extends StatelessWidget {
@@ -49,7 +51,9 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: 60),
               OutlinedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MainScreenWidget(),));
+                },
                 child: const Text(
                   "готово",
                   style: TextStyle(fontSize: 36, fontWeight: FontWeight.w500,color:Colors.black),
