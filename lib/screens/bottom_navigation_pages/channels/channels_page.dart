@@ -14,7 +14,7 @@ const List nameChanels = <String>[
 ];
 
 class ChannelsPage extends StatefulWidget {
- ChannelsPage({Key?key,required this.appBarName}):super(key: key);
+ const ChannelsPage({Key?key,required this.appBarName}):super(key: key);
  final String appBarName;
   @override
   State<ChannelsPage> createState() => _ChannelsPageState();
@@ -46,6 +46,7 @@ class _ChannelsPageState extends State<ChannelsPage> {
                             child: Text(chanel),
                             onPressed: () {
                               Navigator.push(context, MaterialPageRoute(builder: (context) =>  ChannelsPage(appBarName: chanel,),));
+                            
                             },
                           ),
                         );
@@ -54,6 +55,7 @@ class _ChannelsPageState extends State<ChannelsPage> {
                   );
                 },
               );
+               
             },
             icon: const Icon(
               Icons.menu,

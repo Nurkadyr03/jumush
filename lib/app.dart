@@ -1,7 +1,7 @@
 import 'package:jumush/screens/main_screen.dart';
 import 'package:jumush/screens/registration_pages/login_page.dart';
 import 'package:jumush/screens/registration_pages/sign_in_page.dart';
-//import 'package:jumush/screens/registration_pages/sign_in_page.dart';
+
 import 'package:jumush/tools/file_imports.dart';
 
 class MyApp extends StatelessWidget {
@@ -16,7 +16,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const SignInPage(),
+      routes: {
+        "/": (context) => const SignInPage(),
+        "/main_screen": (context) => const MainScreenWidget(),
+        "/login_page": (context) => const LoginPage(),
+      },
+      initialRoute: "/",
     );
   }
 }

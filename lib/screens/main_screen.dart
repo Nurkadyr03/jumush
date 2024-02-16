@@ -1,3 +1,5 @@
+
+
 import '../tools/file_imports.dart';
 
 class MainScreenWidget extends StatefulWidget {
@@ -32,7 +34,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
           ProfilePage(),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
+      bottomNavigationBar:BottomNavigationBar(
         currentIndex: _selectedTab,
         items:const [
            BottomNavigationBarItem(

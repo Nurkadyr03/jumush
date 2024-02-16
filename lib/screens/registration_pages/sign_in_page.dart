@@ -70,7 +70,7 @@ class SignInPage extends StatelessWidget {
                 const SizedBox(height: 60),
                 OutlinedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage(),));
+                    Navigator.pushReplacementNamed(context,      "/main_screen");
                   },
                   child: const Text(
                     "готово",
@@ -79,6 +79,13 @@ class SignInPage extends StatelessWidget {
                         fontWeight: FontWeight.w500,
                         color: Colors.black),
                   ),
+                ),
+                const SizedBox(height: 30),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context,  "/login_page");
+                  },
+                  child: Text("У меня есть логин."),
                 ),
                 //const Text("Готово",style:TextStyle(fontSize: 36,fontWeight: FontWeight.bold))
               ],

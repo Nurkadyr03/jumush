@@ -52,7 +52,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 60),
               OutlinedButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const MainScreenWidget(),));
+                  Navigator.pushReplacementNamed(context,       "/main_screen");
                 },
                 child: const Text(
                   "готово",
